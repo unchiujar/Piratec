@@ -1,6 +1,10 @@
 # Functions for piratec main script
 
-source config
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+RUNNING_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+source ${RUNNING_DIR}/config
 
 vers="0.0 testing 5"
 
