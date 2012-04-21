@@ -1,11 +1,8 @@
 
-Piratec version 0.0F Final testing version 02 Nov 2011
+Piratec version 0.6 Magnet links support 21 April 2012
 
-Final testing. Basic frame is now working, going to alpha-state.
-Until release (1) I'am trying to implement all important Piratebay
-features (such as categories) and keep bugs and too-ugly-monkey-code
-out.
-
+Added magnet links support. Torrent files are no longer saved and a bittorrent application
+is no called with the magnet link as argument.
 --
 
 Description:
@@ -22,9 +19,9 @@ Usage: piratec -h | --help
        piratec -v | --version
        #not implemented in this version: {piratec -c | --category TESTING!
 	  
-	   #Example: piratec -s archlinux
+       #Example: piratec -s archlinux
        #Categories: 100 music, 200 movies, 300 apps, 400 games
-	   #Example: piratec -c 300,400 -s linux
+       #Example: piratec -c 300,400 -s linux
        #Menu:  
 	   
 	   After search, hits are shown in a numbered list. You may download
@@ -32,7 +29,8 @@ Usage: piratec -h | --help
        
        Hit 'h' for this help, and obviously 'q' for quits.
 
-Misc:  - Using "piratec -s" without string parameter shows recent additions to site.
+Misc:   - Edit the config file and add an application that can be called with magnet links  
+        - Using "piratec -s" without string parameter shows recent additions to site.
          Consider it as bug;).
        - You should edit config-file to change settings.
        - In crash or ctrl-c quits temporary files are not deleted until next run.
@@ -40,11 +38,14 @@ Misc:  - Using "piratec -s" without string parameter shows recent additions to s
 
 Version history
 -----------------------------------------------------
+Version  0.6 Added magnet links and removed .torrent files support
+            - added parsing for magnet links as TPB removed torrent file links 
+
 
 Version 0.0F Final testing version (2 Nov 2011)
 	- Cleaned up code
   	- Now uses config-file and separate function libriary
-    - Still has plenty monkey code.  
+        - Still has plenty monkey code.  
 
 Version 0.0t4 Fourth testing (1 Nov 2011)
 	- Better menu

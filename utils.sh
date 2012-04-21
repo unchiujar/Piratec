@@ -124,8 +124,7 @@ function load_torrent_data {
 	awk '{gsub(/<[^>]*>|^[ \t]*|\\|;|&amp*|€/,"");print}' |sed 's/$/                                      /' |cut -c1-43 > $piratefound
 
 	#LINKS
-	grep 'http://torrents.thepiratebay.org/' $piratetmp |cut -d '=' -f2 \
-		|cut -d '"' -f2 > $piratelinks
+	grep 'magnet:?' $piratetmp | cut -d "\"" -f2 > $piratelinks
 
 	#SIZE
 	grep "<font class=\"detDesc\">" $piratetmp | \
@@ -218,8 +217,8 @@ download_torrent() {
 		#if number under 31 start downloading corresponding file
 		elif [ "$tname" -lt "31" ]; then
 			torrdown=`cat $piratelinks |sed -n "${tname}p"`
-			wget -q $torrdown -P $torrentdir
-			echo -e \\n"Torrent saved to $torrentdir"\\n
+			$torrentapp $torrdown
+			echo -e \\n"Downloading torrent using $torrentapp"\\n
 			normal_exit #Normal exit-function
 		
 		else
